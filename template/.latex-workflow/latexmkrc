@@ -1,0 +1,17 @@
+# Invoked by .latex-workflow/build.ps1; does not override the project's .latexmkrc.
+$pdf_mode = 5;
+$max_repeat = 8;
+$xelatex = 'xelatex -synctex=1 -interaction=nonstopmode -file-line-error -halt-on-error %O %S';
+
+add_cus_dep('acn', 'acr', 0, 'thesis_glossaries');
+add_cus_dep('glo', 'gls', 0, 'thesis_glossaries');
+sub thesis_glossaries {
+    my ($base, $path) = fileparse($_[0]);
+    return system('makeglossaries', '-d', $path, $base);
+}
+
+add_cus_dep('nlo', 'nls', 0, 'thesis_nomenclature');
+sub thesis_nomenclature {
+    return system('makeindex', "$_[0].nlo", '-s', 'nomencl.ist',
+                  '-o', "$_[0].nls", '-t', "$_[0].nlg");
+}

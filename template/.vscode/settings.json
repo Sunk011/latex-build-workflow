@@ -1,0 +1,18 @@
+{
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+  "latex-workshop.latex.autoClean.run": "never",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/pdf",
+  "latex-workshop.latex.jobname": "",
+  "latex-workshop.latex.external.build.command": "pwsh",
+  "latex-workshop.latex.external.build.args": [
+    "-NoProfile", "-STA", "-ExecutionPolicy", "Bypass",
+    "-File", ".latex-workflow/build.ps1"
+  ],
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.intellisense.package.enabled": true,
+  "files.exclude": { "**/.build": true },
+  "files.watcherExclude": { "**/.build/**": true, "**/pdf/**": true },
+  "[latex]": { "editor.defaultFormatter": "James-Yu.latex-workshop", "editor.formatOnPaste": false }
+}
